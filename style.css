@@ -1,0 +1,9 @@
+#mode {
+	width: 440px;
+}
+.txtinout {
+	font: 16px "Courier New",monospaced;
+	width: 90%;
+	height: 200px;
+	tab-size: 4;
+}

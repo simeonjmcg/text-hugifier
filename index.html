@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="icon" type="image/x-icon" href="/icon.ico">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Text Hugifier</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="./style.css">
+	</head>
+	<body>
+		<p>
+			<textarea id="inputTxtarea" class="txtinout" wrap="off"></textarea>
+		</p>
+		<p>
+			<noscript>This requires Javascript to be enabled to run properly. 
+			please enable Javascript and try again.</noscript></p>
+		<p>
+			It sometimes does not show up correctly in some places because the
+			 ' '(spacebar) character might be a different size. when it shows 
+			 up wrong, use the "Other" option from the menu and try again.
+		</p>
+		<p>
+			display fonts: <select id="fonts">
+				<option value="'Courier New',monospaced">Courier New</option>
+				<option value="'Times New Roman', Georgia, Serif">Times New Roman</option>
+				<option value="arial, sans-serif">Arial</option>
+				<option value="block">Universal(Semi-transparent Blocks)</option>
+			</select>
+		</p>
+		<p>
+			Maximum Line Length: <input type="text" id="lineLen" />
+		</p>
+		<p>
+			<textarea id="outputTxtarea" class="txtinout" wrap="off" disabled >&nbsp;</textarea>
+		</p>
+		<script src="hugifier.js"></script>
+		<script src="./charlist.jsonp"></script>
+	</body>
+</html>
