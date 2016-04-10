@@ -1,6 +1,6 @@
 var charDict      = {},
     frame         = {},
-    lineLen	      = $("#lineLen"),
+    lineLen       = $("#lineLen"),
     inputTxtarea  = $("#inputTxtarea"),
     outputTxtarea = $("#outputTxtarea"),
     fontinput     = $("#fonts");
@@ -29,39 +29,16 @@ inputTxtarea.on("input", function(e) {
 	if(!charHeight) {
 		return;
 	}
-	var longest    = 0,
-	    maxlen     = lineLen.val(),
+	var maxlinelen = parseInt(lineLen.val()),
 	    inputstr   = inputTxtarea.val(),
 	    outputstr  = "",
 	    font       = fontinput.val(),
-	    buildlines      = [];
+	    buildlines = [];
 	var i, d,  // index vars
 	    _i,    // unused index
 	    len,   // buildlines length
 	    l,     // tmp strlen
 	    ch     // character
-	
-	// loop through input, counting
-	var lidx = 0; // last idx
-	for (i in inputstr) {
-		if(inputstr.charAt(i) == "\n" || i == inputstr.length-1) {
-			i = parseInt(i); // because i in inputstr likes converts to string
-			
-			if(i == inputstr.length-1) {
-				// end of line has no /n, so get length from lidx
-				len = inputstr.length - lidx;
-			} else {
-				// length between last /n and current /n
-				len = i - lidx;
-			}
-			// save as max if greater
-			if (len > longest) {
-				longest = len;
-			}
-			// save char position, skipping the \n character
-			lidx = i + 1;
-		}
-	}
 	
 	// initialize buildlines variable
 	for (i=0, l=charHeight; i < l; i++) {
@@ -91,10 +68,10 @@ inputTxtarea.on("input", function(e) {
 	// loop through inputstr
 	for (i in inputstr) {
 		// check if lineLen input is valid
-		if (!isNaN(lineLen)) {
+		if (!isNaN(maxlinelen)) {
 			len = buildlines[0].length;
 			// if buildlines length is more than lineLen, break line.
-			if (len > maxlen) {
+			if (len > maxlinelen) {
 				// push buildlines to outputstr and reset
 				pushoutputstr();
 			}
@@ -154,6 +131,10 @@ inputTxtarea.on("input", function(e) {
 });
 
 fontinput.change(function(e) {
+	inputTxtarea.trigger("input");
+});
+
+lineLen.on("input", function(e) {
 	inputTxtarea.trigger("input");
 });
 
