@@ -79,7 +79,7 @@ inputTxtarea.on('input', function(e) {
       if(charDict[ch]) {        
         var ll = build.length;
         for (var d=0; d<ll; d++) {
-          build[d] += ' ' + charDict[ch][d];
+          build[d] += charDict[ch][d];
         }
       }
       break;
